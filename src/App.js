@@ -9,17 +9,15 @@ import Navigate from './components/Navigate.jsx'
 
 function App() {
   return (
-    <div>
-      {/* <Cart /> */}
-     
-      <div className="container mt-3">
+    <div>     
+      <div className="container-fluid px-0">
         <Router>
-          <Navigate />
-          <Switch>
-            <Route exact path={["/", "/product"]} component={Product} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/description/:id" component={Description} />
-          </Switch>
+            <Navigate />
+            <Switch>
+                <Route exact path={["/", "/product"]} component={Product} />
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path="/description/:id" component={Description} />
+            </Switch>
         </Router>
       </div>
     </div>

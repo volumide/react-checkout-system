@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Cards from './card/Cards.jsx'
 
- function Cart() {
+function Cart() {
 	let cartItem =  JSON.parse(localStorage.getItem('cartItem'))
 	let [products, setProducts] = useState([]) // product container from api
 	let [cart, setCart] = useState([]) //adding to carts and getting from cart container
@@ -36,7 +36,7 @@ import { Link } from "react-router-dom";
         cartCopy.push(product)
         setCart([...cart, product])
         localStorage.setItem('cartItem', JSON.stringify(cartCopy))
-        console.log(cartCopy)
+        // console.log(cartCopy)
 	}
 
 	useEffect(() => {
@@ -48,28 +48,16 @@ import { Link } from "react-router-dom";
 
 	return (	
 		<div>
-			<div className="container">
+			<div className="container px-0">
 				<div className="row py-5">
 					<h4 className='col-12 text-center'>All Store Products</h4>
 					<p className='col-12 text-center'>Items In cart {cart.length} </p>
 					{products.map((product, id) => {
-							return(
-								<div className="col-md-4 py-4" key={id}>
-									<div className="card rounded-0">
-										<div className="img">
-											<img src ={product.image} alt={product.title} loading='lazy' />
-										</div>
-										
-										<div className="card-body">
-											<small className="card-text d-block"> {product.price} </small>
-											<p className="d-block py-2">
-												 <Link to ={`description/${product.id}`}>View Product</Link>
-											</p>
-											<button type="button" className="btn btn-primary btn-sm rounded-0 my-3" onClick={()=> addToCart(product, product.id)}>Add to Cart</button>
-										</div>
-									</div>
-								</div>
-							)
+                        return(
+                            <div className="col-md-4 py-4" key={id}>
+                                <Cards product = {product} event = {()=> addToCart(product, product.id)} show = {true}/>
+                            </div>
+                        )
 						})
 					}
 				</div>

@@ -1,3 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(202, 202, 202);
+}
+
+.bg-dark{
+    background: #000 !important;
+}
 .img{
   padding: 5px 5px;
   height: 200px;

@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 
 function Description() {
     const path = useLocation()
-	const currentId = localStorage.getItem('currentId') || 1
 	const [id] = useState(path.pathname.split('/')[2] || 1)
 	const [products, setProducts] = useState([])
 	const [error, setError] = useState('false')
@@ -22,36 +21,39 @@ function Description() {
 			setProducts(current[id-1])
 		})
 		.catch(err =>{
-			console.log(err)
-			setError(err)
+            setError(err)
+			console.log(error)
 		})
 	}
 
-
 	useEffect(() => {
-        // console.log( window.location.href)
-        console.log(path.pathname.split('/')[2])
-        // console.log(path.pathname.split('/'))
         fetchData()
-	}, [id, path] )
+    }, [id])
+    
+    function Render(){
+        return <>
+            <div className='container'>
+                <div className='row py-5'>
+                    <h3 className='col-12 text-center mb-5'>{products.title} </h3>
+                    <div className="col-md-4">
+                        <div className="img border py-5 bg-white">
+                            <img src ={products.image} alt={products.title} loading='lazy' />
+                        </div>
+                    </div>
+                    <div className="col-md-8">
+                        <p className='py-2 font-weight-bold  text-primary'>   ${products.price} </p>
+                        <small className='d-block py-1'> {products.category} </small>
+                        <p className='py-2'> {products.description} </p>
+                    </div>
+                </div>
+            </div>
+        </>
+    }
+
 
 	return (
 		<div>
-			<div className='container'>
-				<div className='row py-5'>
-					<h3 className='col-12 text-center mb-5'>{products.title} </h3>
-					<div className="col-md-4">
-						<div className="img border py-5">
-							<img src ={products.image} alt={products.title} loading='lazy' />
-						</div>
-					</div>
-					<div className="col-md-8 border">
-						<p className='py-2 font-weight-bold  text-primary'>   ${products.price} </p>
-						<small className='d-block py-1'> {products.category} </small>
-						<p className='py-2'> {products.description} </p>
-					</div>
-				</div>
-			</div>
+            <Render />
 		</div>
 	)
 }
