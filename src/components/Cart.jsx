@@ -1,13 +1,13 @@
 import React,  { useState, useEffect } from "react"
 
  function Product() {
-	const cartItem = JSON.parse(localStorage.getItem('cartItem')) || 1
-	const [cart, setCart] = useState([cartItem])
+	let cartItem = JSON.parse(localStorage.getItem('cartItem')) || 1
+    let [cart, setCart] = useState([])
+    
 	
 	function getCartProduct(){
-		let newCart = cart.shift()
-		setCart(newCart)
-		console.log(newCart)
+		setCart(cartItem)
+		console.log(cart)
 	}
 
 	useEffect(() => {
@@ -21,8 +21,8 @@ import React,  { useState, useEffect } from "react"
 				<div className="row">
 					{cart.map((product, id) => {
 							return(
-								<div className="col-md-3 py-4" key={id}>
-									<div className="card rounded-0">
+								<div className="col-md-4 py-5" key={id}>
+									<div className="card rounded-0 py-4">
 										<div className="img">
 											<img src ={product.image} alt={product.title} loading='lazy' />
 										</div>

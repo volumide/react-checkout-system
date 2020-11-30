@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-	
+import React, { useState, useEffect} from 'react'
+import { useLocation } from 'react-router-dom';
 
 
 function Description() {
+    const path = useLocation()
 	const currentId = localStorage.getItem('currentId') || 1
-	const [id] = useState(currentId)
+	const [id] = useState(path.pathname.split('/')[2] || 1)
 	const [products, setProducts] = useState([])
 	const [error, setError] = useState('false')
 
@@ -19,8 +20,6 @@ function Description() {
 		.then(response => {
 			current.push(...response)
 			setProducts(current[id-1])
-			// console.log(products)
-			// console.log(current[id-1])
 		})
 		.catch(err =>{
 			console.log(err)
@@ -30,9 +29,11 @@ function Description() {
 
 
 	useEffect(() => {
-		fetchData()
-		// console.log(products)
-	}, [products])
+        // console.log( window.location.href)
+        console.log(path.pathname.split('/')[2])
+        // console.log(path.pathname.split('/'))
+        fetchData()
+	}, [id, path] )
 
 	return (
 		<div>
