@@ -4,13 +4,23 @@
     box-sizing: border-box;
 }
 
-body{
-    background: rgb(202, 202, 202);
+.bg-dark{
+    background: #4673C8 !important;
 }
 
-.bg-dark{
-    background: #000 !important;
+.border-primary{
+    border-color: #4673C8 !important;
 }
+
+.card{
+    overflow: hidden;
+    box-shadow: 0 0 2px #4673C8;
+}
+
+.bg-secondary{
+    background: #C84673 !important;
+}
+
 .img{
   padding: 5px 5px;
   height: 200px;

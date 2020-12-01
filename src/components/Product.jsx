@@ -49,12 +49,12 @@ function Cart() {
 	return (	
 		<div>
 			<div className="container px-0">
-				<div className="row py-5">
-					<h4 className='col-12 text-center'>All Store Products</h4>
-					<p className='col-12 text-center'>Items In cart {cart.length} </p>
+				<div className="row py-5 px-0 mx-0">
+					<h5 className='col-12 font-weight-bold border rounded  py-3 ' style={{width:"500px"}}>Products</h5>
+					{/* <p className='col-12 text-center border py-2 rounded'> <i class="fa fa-shopping-cart text-danger" aria-hidden="true"></i> <sup className='font-weight-bold'>{cart.length}</sup> </p> */}
 					{products.map((product, id) => {
                         return(
-                            <div className="col-md-4 py-4" key={id}>
+                            <div className="col-md-3 py-4" key={id}>
                                 <Cards product = {product} event = {()=> addToCart(product, product.id)} show = {true}/>
                             </div>
                         )

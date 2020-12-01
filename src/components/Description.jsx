@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 
 
 function Description() {
     const path = useLocation()
-	const [id] = useState(path.pathname.split('/')[2] || 1)
+	const [id] = path.pathname.split('/')[2] || 1
 	const [products, setProducts] = useState([])
 	const [error, setError] = useState('false')
 
@@ -32,18 +32,18 @@ function Description() {
     
     function Render(){
         return <>
-            <div className='container'>
-                <div className='row py-5'>
+            <div className='container py-5'>
+                <div className='row py-5 border'>
                     <h3 className='col-12 text-center mb-5'>{products.title} </h3>
                     <div className="col-md-4">
-                        <div className="img border py-5 bg-white">
+                        <div className="img py-5 bg-white">
                             <img src ={products.image} alt={products.title} loading='lazy' />
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <p className='py-2 font-weight-bold  text-primary'>   ${products.price} </p>
-                        <small className='d-block py-1'> {products.category} </small>
+                        <p className='d-block font-weight-bold'> {products.category} </p>
                         <p className='py-2'> {products.description} </p>
+                        <p className=' border d-inline-block rounded px-3 py-3 font-weight-bold  text-primary'>   ${products.price} </p>
                     </div>
                 </div>
             </div>

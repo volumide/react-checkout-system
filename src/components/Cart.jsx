@@ -7,7 +7,6 @@ import Cards from './card/Cards.jsx'
     
 	function getCartProduct(){
 		setCart(cartItem)
-		console.log(cart)
 	}
 
 	useEffect(() => {
@@ -20,7 +19,7 @@ import Cards from './card/Cards.jsx'
 				<div className="row">
 					{cart.map((product, id) => {
 						return(
-                            <div className="col-md-4 py-5" key={id}>
+                            <div className="col-md-3 py-5" key={id}>
                                 <Cards product = {product} />
                             </div>)
 						})
